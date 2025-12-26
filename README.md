@@ -1,39 +1,39 @@
 # FLAC/WAV to MP3 Converter
 
-Una aplicación GUI en Python para convertir archivos de audio FLAC y WAV a formato MP3 con alta calidad (320kbps por defecto).
+A Python GUI application for converting FLAC and WAV audio files to MP3 format with high quality (320kbps by default).
 
-## Características
+## Features
 
-- **Interfaz gráfica intuitiva** con tkinter
-- **Conversión por lotes** de múltiples archivos
-- **Preservación de estructura de carpetas** opcional
-- **Normalización de audio** configurable
-- **Configuración personalizable** vía archivo YAML
-- **Procesamiento paralelo** para mayor velocidad
-- **Barra de progreso** en tiempo real
+- **Intuitive graphical interface** with tkinter
+- **Batch conversion** of multiple files
+- **Optional folder structure preservation**
+- **Configurable audio normalization**
+- **Customizable configuration** via YAML file
+- **Parallel processing** for better speed
+- **Real-time progress bar**
 
-## Requisitos
+## Requirements
 
-### Dependencias del Sistema
+### System Dependencies
 - **Python 3.7+**
-- **FFmpeg** (debe estar en PATH)
+- **FFmpeg** (must be in PATH)
 
-### Dependencias de Python
-- `PyYAML` - Para configuración
-- `tkinter` - Para la interfaz gráfica (incluido en Python)
-- `pathlib` - Para manejo de rutas (incluido en Python 3.4+)
+### Python Dependencies
+- `PyYAML` - For configuration
+- `tkinter` - For graphical interface (included with Python)
+- `pathlib` - For path handling (included with Python 3.4+)
 
-## Instalación
+## Installation
 
-1. **Clona el repositorio**
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/tu-usuario/flac-wav-to-mp3-converter.git
+   git clone https://github.com/your-username/flac-wav-to-mp3-converter.git
    cd flac-wav-to-mp3-converter
    ```
 
-2. **Instala FFmpeg**
+2. **Install FFmpeg**
    
-   **macOS (con Homebrew):**
+   **macOS (with Homebrew):**
    ```bash
    brew install ffmpeg
    ```
@@ -45,78 +45,78 @@ Una aplicación GUI en Python para convertir archivos de audio FLAC y WAV a form
    ```
    
    **Windows:**
-   - Descarga desde [ffmpeg.org](https://ffmpeg.org/download.html)
-   - Añade el directorio bin al PATH
+   - Download from [ffmpeg.org](https://ffmpeg.org/download.html)
+   - Add the bin directory to PATH
 
-3. **Instala dependencias de Python**
+3. **Install Python dependencies**
    ```bash
    pip install PyYAML
    ```
 
-## Uso
+## Usage
 
-### Ejecución de la aplicación
+### Running the application
 ```bash
 python main.py
 ```
 
-### Interfaz gráfica
-1. **Selecciona carpeta de entrada** - Carpeta que contiene archivos FLAC/WAV
-2. **Selecciona carpeta de salida** - Donde se guardarán los archivos MP3
-3. **Haz clic en "▶ Convertir"** para iniciar el proceso
+### Graphical interface
+1. **Select input folder** - Folder containing FLAC/WAV files
+2. **Select output folder** - Where MP3 files will be saved
+3. **Click "Convert"** to start the process
 
-## ⚙️ Configuración
+## Configuration
 
-Edita el archivo `config.yaml` para personalizar la conversión:
+Edit the `config.yaml` file to customize the conversion:
 
 ```yaml
-# Configuración de audio
-bitrate: 320          # Bitrate en kbps (128, 192, 256, 320)
-sample_rate: 44100    # Frecuencia de muestreo en Hz
-channels: 2           # Número de canales (1=mono, 2=estéreo)
+# Audio configuration
+bitrate: 320          # Bitrate in kbps (128, 192, 256, 320)
+sample_rate: 44100    # Sample rate in Hz
+channels: 2           # Number of channels (1=mono, 2=stereo)
 
-# Opciones de procesamiento
-normalize: true               # Normalizar audio con loudnorm
-preserve_structure: true     # Mantener estructura de carpetas
+# Processing options
+normalize: true               # Normalize audio with loudnorm
+preserve_structure: true     # Maintain folder structure
 ```
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 flac-wav-to-mp3-converter/
-├── main.py              # Punto de entrada principal
-├── config.yaml          # Archivo de configuración
-├── README.md            # Documentación
+├── main.py              # Main entry point
+├── config.yaml          # Configuration file
+├── README.md            # Documentation
 └── src/
-    ├── gui.py           # Interfaz gráfica
-    ├── converter.py     # Lógica de conversión
-    └── __pycache__/     # Cache de Python
+    ├── gui.py           # Graphical interface
+    ├── converter.py     # Conversion logic
+    └── __pycache__/     # Python cache
 ```
 
-## Características Técnicas
+## Technical Features
 
-- **Formatos soportados:** FLAC, WAV → MP3
-- **Codec:** libmp3lame (alta calidad)
-- **Procesamiento:** Multiproceso para mejor rendimiento
-- **Metadatos:** Preservación automática de metadatos
-- **Normalización:** loudnorm de FFmpeg para audio consistente
+- **Supported formats:** FLAC, WAV → MP3
+- **Codec:** libmp3lame (high quality)
+- **Processing:** Multiprocess for better performance
+- **Metadata:** Automatic metadata preservation
+- **Normalization:** FFmpeg loudnorm for consistent audio
 
-## Solución de Problemas
+## Troubleshooting
 
-### Error "yaml no funciona"
+### "yaml not working" error
 ```bash
 pip install PyYAML
 ```
 
-### Error "ffmpeg command not found"
-- Asegúrate de que FFmpeg esté instalado y en el PATH
-- Verifica con: `ffmpeg -version`
+### "ffmpeg command not found" error
+- Make sure FFmpeg is installed and in PATH
+- Verify with: `ffmpeg -version`
 
-### La aplicación no se abre
-- Verifica que Python 3.7+ esté instalado
-- Ejecuta desde el directorio del proyecto
+### Application won't open
+- Verify that Python 3.7+ is installed
+- Run from the project directory
 
 
-## Autor
+## Author
 
-Desarrollado con ❤️ para DJs.
+Developed with <3 for DJs.

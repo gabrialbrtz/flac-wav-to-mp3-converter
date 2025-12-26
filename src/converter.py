@@ -45,17 +45,17 @@ def convert_file(args):
     subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
-def start_conversion(input_dir, output_dir, progress_bar, status_label):
+def start_conversion(input_dir, output_dir, progress_bar, status_label, root):
     files = [
-        Path(root) / f
-        for root, _, filenames in os.walk(input_dir)
+        Path(dir_path) / f
+        for dir_path, _, filenames in os.walk(input_dir)
         for f in filenames
         if f.lower().endswith(SUPPORTED_EXT)
     ]
 
     total = len(files)
     if total == 0:
-        messagebox.showwarning("Sin archivos", "No se encontraron FLAC o WAV")
+        messagebox.showwarning("No files", "No FLAC or WAV files found")
         return
 
     progress_bar["maximum"] = total
@@ -65,10 +65,17 @@ def start_conversion(input_dir, output_dir, progress_bar, status_label):
         for f in files:
             futures.append(executor.submit(convert_file, (f, input_dir, output_dir)))
 
-        for i, _ in enumerate(futures, start=1):
-            futures[i - 1].result()
-            progress_bar["value"] = i
-            status_label.config(text=f"Procesando {i}/{total}")
-            progress_bar.update()
+        for i, future in enumerate(futures, start=1):
+            try:
+                future.result()
+                progress_bar["value"] = i
+                status_label.config(text=f"Processing {i}/{total}")
+                root.update()
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed to convert file: {str(e)}")
+                return
 
-    status_label.config(text="Conversión finalizada")
+    status_label.config(text="Conversion completed")
+    progress_bar["value"] = total
+    root.update()
+    messagebox.showinfo("Complete", f"Successfully converted {total} files to MP3")
