@@ -1,0 +1,7 @@
+input_dir: "input_audio"
+output_dir: "output_mp3"
+bitrate: 320
+sample_rate: 44100
+channels: 2
+normalize: true
+preserve_structure: true
